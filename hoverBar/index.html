@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>音乐悬浮条</title>
+    <link rel="stylesheet" type="text/css" href="styles/reset.css">
+    <link rel="stylesheet" type="text/css" href="styles/main1.min.css">
+    <script type="text/javascript" src="scripts/jquery1.9.1.js"></script>
+    <script type="text/javascript" src="scripts/js1.js"></script>
+</head>
+
+<body>
+    <div class="music_bar">
+        <div class="btns">
+            <span id="previous_song">上一曲</span><span id="play_or_pause" class="play">播放/暂停</span><span id="next_song">下一曲</span>
+        </div>
+        <div class="play clearfix">
+            <div class="p_flag">
+                <a href=""><img src="images/flag1.jpg" alt="弦子" /></a>
+            </div>
+            <div class="m_pbar">
+                <div class="m_pbar_words"><span id="music_title">明天，你好</span><span id="singer">咖啡牛奶</span><span id="duration"><em id="currentTime">00:00</em>/00:00</span></div>
+                <div id="pbar_0">
+                    <div id="pbar_1">
+                        <div id="pbar_2">播放进度条
+                            <div id="pbar_dot"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <audio id="myPlayer" width="0" height="0" src="song/古巨基 - 找到你是我最伟大的成功.mp3" preload="true">
+            你的浏览器不支持html5！
+        </audio>
+    </div>
+</body>
+
+</html>

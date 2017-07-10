@@ -1,0 +1,220 @@
+@charset "UTF-8";
+@min_width: 800px;
+
+.play {
+	//play键
+	width: 36px;
+	background-position: 0px -204px;
+
+	&:hover {
+		background-position: -40px -204px;
+	}
+
+}
+
+.pause {
+	// pause键
+	width: 36px;
+	background-position: 0px -165px;
+
+	&:hover {
+		background-position: -40px -165px;
+	}
+
+}
+
+.absolute {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	background: url("../images/statbar.png") no-repeat;
+	top: 0px;
+	left: 0px;
+}
+
+/* 音乐条 */
+.music_bar {
+	display: block;
+	background: #242323;
+	width: 100%;
+	height: 50px;
+	min-width: @min_width;
+	line-height: 50px;
+	position: fixed;
+	bottom: 50%;
+	left: 0px;
+
+	div {
+		display: inline-block;
+	}
+
+	* {
+		// border: 1px solid red;
+	}
+
+	// 播放控制按钮
+	div.btns {
+		display: inline-block;
+		width: 20%;
+		height: 50px;
+		line-height: 50px;
+		color: #fff;
+		text-align: center;
+		vertical-align: top;
+		// background: url(../images/playbar.png);
+		// background-position: -0px -58px;
+
+		span {
+			display: inline-block;
+			width: 30px;
+			height: 35px;
+			background: url(../images/playbar.png) no-repeat;
+			vertical-align: middle;
+			text-indent: -9999px;
+
+			&#previous_song {
+				background-position: 0px -127px;
+
+				&:hover {
+					background-position: -30px -127px;
+				}
+
+			}
+
+			// #play_or_pause 
+			&.play {
+				.play;
+			}
+
+			&.pause {
+				.pause;
+			}
+
+			&#next_song {
+				background-position: -80px -127px;
+
+				&:hover {
+					background-position: -110px -127px;
+				}
+
+			}
+
+		}
+
+	}
+
+	div.play {
+		display: inline-block;
+		vertical-align: top;
+		width: 550px;
+		height: 50px;
+		// border: 1px solid red;
+
+		.p_flag {
+			display: inline-block;
+			// line-height: 50px;
+
+			a {
+				display: inline-block;
+				width: 34px;
+				height: 34px;
+				vertical-align: top;
+
+				img {
+					display: inline-block;
+					vertical-align: middle;
+					border-radius: 17px;
+					width: 100%;
+					height: 100%;
+					transition: all 0.1s linear;
+
+					&:hover {
+						border-radius: 1px;
+					}
+
+				}
+
+			}
+
+		}
+
+		.m_pbar {
+			display: block;
+			width: 510px;
+			height: 50px;
+			// border: 1px solid red;
+			float: right;
+			color: #fff;
+			font: normal 12px "micsoft yahei";
+
+			.m_pbar_words {
+				width: 100%;
+				height: 28px;
+				line-height: 28px;
+			}
+
+			#music_title {
+				margin: 5px 10px;
+				color: #fff;
+			}
+
+			#singer {
+				margin: 5px 10px;
+				color: #9B9B9B;
+			}
+
+			#duration {
+				margin: 5px 0px 5px 290px;
+				color: #9B9B9B;
+				font-family: Arial, Helvetica, sans-serif;
+
+				em {
+					color: #D1CECE;
+				}
+
+			}
+
+			#pbar_0 {
+				text-indent: -9999px;
+				border-radius: 10px;
+				display: block;
+				width: 493px;
+				height: 9px;
+				margin: 5px 10px;
+				background: url("../images/statbar.png") no-repeat;
+				position: relative;
+				// overflow: hidden;
+				// background-position: 0 -29px;
+				// background-position: 0 -67px;
+			}
+
+			#pbar_1 {
+				.absolute;
+				background-position: -0px -30px;
+				border-radius: 10px;
+			}
+
+			#pbar_2 {
+				.absolute;
+				background-position: -0px -66px;
+				width:0px;
+				// overflow: hidden;
+				// left: -100px;
+			}
+
+			#pbar_dot {
+				background: url("../images/ply_btn_hvr.png");
+				background-position: 0px 4px;
+				width: 22px;
+				height: 24px;
+				position: absolute;
+				z-index: 1000;
+				right: -11px;
+				top: -12px;
+			}
+
+		}
+
+	}
+
+}
