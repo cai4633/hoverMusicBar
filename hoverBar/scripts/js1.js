@@ -40,12 +40,12 @@
                 }
                 $currentTime = $("#currentTime");
                 timer1 = setInterval(function() {
-                    curTime=currentTime = myPlayer.currentTime; //歌曲当前时间；
-                    currentTime = timeFormat(currentTime);
+                    curTime= myPlayer.currentTime; //歌曲当前时间；
+                    currentTime = timeFormat(curTime);
                     console.log(percentage(curTime/duration));
                     $pbar.css({"width":percentage(curTime/duration)});
                     $currentTime.text(currentTime);
-                    if(curTime==duration){
+                    if(currentTime==dura){  //当音乐到结尾时，清除计时器timer1；
                 			isInitial = 0;                    
                 			clearInterval(timer1);
                 			timer1 = null;
@@ -54,13 +54,14 @@
             });
 
             myPlayer.addEventListener("pause", function() {
-                	clearInterval(timer1);	//暂停时清除计时器防止播放时间闪跳及优化性能
+                if (!myPlayer.ended) {
+                    clearInterval(timer1);  
+                }
+                	//暂停时清除计时器防止播放时间闪跳及优化性能
             })
 
             myPlayer.addEventListener("ended", function() { //歌曲播放完成时触发。清理计时器，优化性能。
-                // clearInterval(timer1);
-                // timer1 = null;
-                // isInitial = 0;
+
             })
 
         }) //$(document).ready();
