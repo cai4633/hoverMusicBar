@@ -63,7 +63,10 @@
                 	//暂停时清除计时器防止播放时间闪跳及优化性能
             })
 
-            myPlayer.addEventListener("ended", function() { //歌曲播放完成时触发。清理计时器，优化性能。
+            myPlayer.addEventListener("ended", function() { //歌曲播放完成时触发，使暂停键变成播放键；
+                $playOrPause.removeClass("pause")
+                                .addClass("play");
+
 
             })
 
