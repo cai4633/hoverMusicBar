@@ -4,19 +4,22 @@
                 $playOrPause = $("#play_or_pause"),
                 $previousSong = $("#previous_song"),
                 $next_song = $("next_song"),
-                $pbar = $("#pbar_2"),
+                $pbar0 = $("#pbar_0"),
+                $pbar1 = $("#pbar_1"),
+                $pbar2 = $("#pbar_2"),
+                $pbarDot=$("#pbar_dot"),
                 $duration = $("#duration"),
                 $currentTime;
             $playOrPause.click(function() {
                 // 播放键和暂停键功能设定；
-                if (myPlayer.readyState == 4 && myPlayer.paused) {
+                if (myPlayer.paused) {
                     myPlayer.play();
                     $playOrPause.removeClass("play")
-                        .addClass("pause");
+                                .addClass("pause");
                 } else {
                     myPlayer.pause();
                     $playOrPause.removeClass("pause")
-                        .addClass("play");
+                                .addClass("play");
                 }
             });
 
@@ -43,7 +46,7 @@
                     curTime= myPlayer.currentTime; //歌曲当前时间；
                     currentTime = timeFormat(curTime);
                     console.log(percentage(curTime/duration));
-                    $pbar.css({"width":percentage(curTime/duration)});
+                    $pbar2.css({"width":percentage(curTime/duration)});
                     $currentTime.text(currentTime);
                     if(currentTime==dura){  //当音乐到结尾时，清除计时器timer1；
                 			isInitial = 0;                    
@@ -64,8 +67,34 @@
 
             })
 
+            // $pbarDot.drag(dragHandler,$pbarDot,$pbar0);
+ // 在进度条被拖动时，播放时间也跟着变化；
+    function dragHandler(e){
+        // console.log($pbar2.offset().left);
+        console.log(e.target);
+        return false;
+    }
+
         }) //$(document).ready();
+
+    // 定义drag方法用来添加拖拽进度条事件处理；
+    jQuery.fn.extend({
+        drag:function(func,dragObj,containerObj){
+                dragObj.mousedown(function(e){
+                     containerObj.on("mousemove",func)
+                        });                
+                dragObj.mouseup(function(e){
+                     containerObj.off("mousemove",func)
+                        })}
+    });
+
+
+
+
 })(jQuery);
+
+
+
 
 // 定义一个函数格式化时间为标准格式00:00；
 function timeFormat(time) {
@@ -86,3 +115,4 @@ function timeFormat(time) {
 	function percentage(number){
 		return ((number*100).toFixed(2)+"%");
 	}
+
